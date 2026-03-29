@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="form-container">
+    <div class="form-card">
+        <h2>Formulario de Producto</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="django-form-fields">
+                {{ form.as_p }}
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="btn-save">Guardar Cambios</button>
+                <a href="{% url 'product_list' %}" class="btn-cancel">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load clp_filters %}
+
+{% block content %}
+<div class="cart-container">
+    <h2 class="cart-title">Carrito de Compras</h2>
+
+    <div class="cart-layout">
+        <div class="cart-items">
+            {% for item in items %}
+            <div class="cart-item-card">
+                <div class="cart-item-image">
+                   {% if item.product.image %}
+                        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                    {% else %}
+                        <img src="{% static 'ecommerce/img/default.png' %}" alt="Sin imagen">
+                    {% endif %}
+                </div>
+                
+                <div class="cart-item-details">
+                    <h3>{{ item.product.name }}</h3>
+                    <p class="cart-item-qty">Cantidad: <strong>{{ item.quantity }}</strong></p>
+                    <p class="cart-item-price">Subtotal: {{ item.total|clp }}</p>
+                </div>
+
+                <div class="cart-item-actions">
+                    <a href="{% url 'remove_from_cart' item.product.id %}" class="btn-remove-cart">
+                        Eliminar
+                    </a>
+                </div>
+            </div>
+            {% empty %}
+            <div class="empty-cart-msg">
+                <p>Tu carrito está vacío actualmente.</p>
+                <a href="{% url 'product_list' %}" class="btn-add-carrito" style="width: auto;">Ir a ver productos</a>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if items %}
+        <div class="cart-summary">
+            <h3>Resumen de Compra</h3>
+            <hr>
+            <div class="summary-row">
+                <span>Productos ({{ items|length }}):</span>
+                <span>{{ item.total|clp }}</span>
+            </div>
+            <div class="summary-row total">
+                <span>Total:</span>
+                <span class="total-amount">{{ total_cart|clp }}</span>
+            </div>
+
+            <form action="{% url 'checkout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn-checkout">Finalizar Compra</button>
+            </form>
+     
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

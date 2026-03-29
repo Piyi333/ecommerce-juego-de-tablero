@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form-container">
+    <div class="form-card">
+        <h2>Iniciar Sesión</h2>
+        
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="django-form-fields">
+                {{ form.as_p }}
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="btn-save">Ingresar</button>
+            </div>
+        </form>
+        
+        <div style="text-align: center; margin-top: 20px;">
+            <p class="text-muted small">¿Olvidaste tu contraseña? Contacta al administrador.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

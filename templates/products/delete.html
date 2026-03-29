@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form-container">
+    <div class="form-card delete-card">
+        <div class="delete-icon">⚠️</div>
+        <h2>Confirmar Eliminación</h2>
+        
+        <p class="delete-message">
+            ¿Estás seguro de que deseas eliminar permanentemente el producto: 
+            <br><strong>"{{ product.name }}"</strong>?
+        </p>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-actions">
+                <button type="submit" class="btn-confirm-delete">Sí, Eliminar Producto</button>
+                <a href="{% url 'product_list' %}" class="btn-cancel">No, mantener producto</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

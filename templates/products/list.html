@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load clp_filters %}
+
+{% block content %}
+
+<h2 style="text-align: center; margin: 40px 0;">Catálogo de Productos</h2>
+
+{% if user.is_superuser %}
+<div style="text-align: center; margin-bottom: 30px;">
+    <a href="{% url 'product_create' %}" class="btn btn-outline-success ms-2" style="width: auto; padding: 10px 30px;">
+        Crear Nuevo Producto
+    </a>
+</div>
+{% endif %}
+
+<div class="product-grid">
+    {% for product in products %}
+    <div class="product-card">
+        
+        <h3>{{ product.name }}</h3>
+
+        {% if product.image %}
+            <img src="{{ product.image.url }}" width="200" height="200" alt="{{ product.name }}">
+        {% else %}
+            <img src="{% static 'ecommerce/img/default.png' %}" width="200" height="200" alt="Sin imagen">
+        {% endif %}
+
+        <p>{{ product.description }}</p>
+        
+        <p class="product-price">
+            {{ product.price|clp }}
+        </p>
+
+        {% if user.is_superuser %}
+            <div class="admin-actions">
+                <a href="{% url 'product_edit' product.id %}" class="btn-edit-custom">Editar</a>
+                <a href="{% url 'product_delete' product.id %}" class="btn-delete-custom">Eliminar</a>
+            </div>
+        {% else %}
+            <a href="{% url 'add_to_cart' product.id %}" class="btn btn-outline-success ms-2">
+                Agregar al carrito
+            </a>
+        {% endif %}
+
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,223 @@
+/* ---------------------------------------------- */
+/*                    BASE                        */
+/* ---------------------------------------------- */
+
+@font-face {
+    font-family: 'Immortal';
+    src: url('../fonts/IMMORTAL.ttf') format('truetype');
+}
+
+body {
+    background-color: #f4f7f6; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-family: 'Immortal', fantasy;
+}
+
+
+/* ---------------------------------------------- */
+/*                 FORMULARIOS                    */
+/* ---------------------------------------------- */
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    min-height: 70vh;
+}
+
+
+.form-card {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px; 
+}
+
+.form-card h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;
+    font-weight: 700;
+}
+
+.django-form-fields p {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+}
+
+
+.django-form-fields label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+
+.django-form-fields input, 
+.django-form-fields textarea, 
+.django-form-fields select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box; 
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+
+.django-form-fields input:focus, 
+.django-form-fields textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+
+.form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn-save {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-save:hover {
+    background-color: #219150;
+}
+
+.btn-cancel {
+    text-align: center;
+    text-decoration: none;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.btn-cancel:hover {
+    color: #c0392b;
+}
+
+/*----------------------------------------------------------------------------
+   Estilos Login
+--------------------------------------------------------------------------- */
+
+.form-card button[type="submit"] {
+    
+    background-color: #3498db !important;
+}
+
+.form-card button[type="submit"]:hover {
+    background-color: #2980b9 !important;
+}
+
+
+.text-muted {
+    color: #95a5a6;
+    font-size: 0.85rem;
+}
+
+/* ---------------------------------------------- */
+/*                   FOOTER                       */
+/* ---------------------------------------------- */
+
+.footer-container {
+    background-color: rgb(14, 7, 37) !important; 
+    padding-bottom: 40px;
+}
+
+.iconos-footer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+
+.footer-icon {
+    height: 30px !important;
+    transition: transform 0.2s ease;
+}
+
+.footer-icon:hover {
+    transform: scale(1.2); 
+}
+
+
+.footer-pago {
+    height: 35px !important;
+}
+
+#link-footer {
+    padding-top: 20px;
+}
+
+
+.footer-container p a {
+    color: white !important;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.footer-container p a:hover {
+    opacity: 1;
+}
+
+
+/* ---------------------------------------------- */
+/*                  MENSAJES                      */
+/* ---------------------------------------------- */
+
+.messages-container {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.message {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.message {
+    animation: fadeOut 4s forwards;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; display: none; }
+}
