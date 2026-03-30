@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="form-container">
+    <div class="form-card">
+        <h2>Crear tu cuenta</h2>
+
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="django-form-fields">
+                {{ form.as_p }}
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-save">Registrarse</button>
+                <a href="{% url 'login' %}" class="btn-cancel">Ya tengo cuenta</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
